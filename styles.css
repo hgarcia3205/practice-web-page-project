@@ -1,0 +1,69 @@
+/* Cards: stacked on mobile */
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+/* Card container */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+
+  /* Keep your content layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Motion */
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.15);
+  border-color: #cbd5e1;
+}
+
+/* Image sizing (as you had before) */
+.card__image {
+  width: 278px;
+  display: block;
+  object-fit: cover;
+
+  /* Animation setup */
+  border-radius: 12px;
+  margin-top: 16px;
+
+  transform: translateY(10px) scale(0.98);
+  opacity: 0;
+  animation: photoIn 650ms ease-out forwards;
+
+  /* Smooth hover */
+  transition: transform 350ms ease, filter 350ms ease;
+}
+
+/* Stagger each card image load-in */
+.card:nth-child(1) .card__image { animation-delay: 120ms; }
+.card:nth-child(2) .card__image { animation-delay: 220ms; }
+.card:nth-child(3) .card__image { animation-delay: 320ms; }
+
+@keyframes photoIn {
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hover “pop” */
+.card:hover .card__image {
+  transform: translateY(-2px) scale(1.04);
+  filter: contrast(1.03) saturate(1.05);
+}
+
+/* Content area */
+.card__content {
+  width: 100%;
+  padding: 16px;
+}
